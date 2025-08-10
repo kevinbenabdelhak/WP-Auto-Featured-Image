@@ -45,13 +45,15 @@ WP Auto Featured Image est un plugin WordPress qui définit automatiquement la p
     -   Allez dans "Réglages" > "WP Auto Featured Image".
     -   Utilisez les boutons de cette page pour appliquer le traitement à vos articles existants.
 
-## Journal des modifications
+## MAJ
+
+### 1.1
+* Ajout d'une case à cocher pour activer la mise à jour automatique de l'image mise en avant lors de la mise à jour d'un post
 
 ### 1.0
 * Définition automatique de l'image mise en avant à la sauvegarde d'un article.
 * Page d'administration pour la mise à jour en masse des images manquantes.
 * Processus AJAX pour un traitement par lots efficace.
-
 
 
 <a href="https://kevin-benabdelhak.fr/soutenir/">
