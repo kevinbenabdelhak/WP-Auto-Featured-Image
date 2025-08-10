@@ -2,17 +2,49 @@
 if (!defined('ABSPATH')) {
     exit;
 }
-
 function my_auto_featured_image_page_html() {
     if (!current_user_can('manage_options')) {
         return;
     }
+    
+ 
+    $automatic_update_enabled = get_option('wp_auto_featured_image_automatic_update_enabled');
+    $checked = checked(1, $automatic_update_enabled, false);
 
     $post_types = get_post_types(array('public' => true), 'objects');
-
     ?>
     <div class="wrap">
         <h1>WP Auto Featured Image</h1>
+        
+        <form method="post" action="options.php">
+            <?php
+            settings_fields('wp_auto_featured_image_options_group');
+            do_settings_sections('wp-auto-featured-image-settings');
+            ?>
+            <h2>Réglages</h2>
+            <table class="form-table">
+                <tr>
+                    <th scope="row">Mise à jour automatique</th>
+                    <td>
+                        <fieldset>
+                            <legend class="screen-reader-text">
+                                <span>Mise à jour automatique</span>
+                            </legend>
+                            <label for="wp_auto_featured_image_automatic_update_enabled">
+                                <input name="wp_auto_featured_image_automatic_update_enabled" type="checkbox" id="wp_auto_featured_image_automatic_update_enabled" value="1" <?php echo $checked; ?>>
+                                Mettre à jour automatiquement l'image mise en avant lors de la mise à jour d'un article.
+                            </label>
+                            <p class="description">Si cette option est activée, le plugin vérifiera et définira l'image mise en avant chaque fois qu'un article est enregistré ou mis à jour.</p>
+                        </fieldset>
+                    </td>
+                </tr>
+            </table>
+            <?php submit_button(); ?>
+        </form>
+
+        ---
+
+        <h2>Mise à jour manuelle</h2>
         <p>Cliquez sur un bouton pour mettre à jour les images mises en avant pour le type de contenu choisi.</p>
         
         <div id="buttons-container">
